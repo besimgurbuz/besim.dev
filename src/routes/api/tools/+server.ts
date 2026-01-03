@@ -23,6 +23,11 @@ const TOOLS: Tool[] = [
 		iconUrl: './svelte-icon.png'
 	},
 	{
+		label: 'React',
+		types: ['frontend'],
+		iconUrl: './react.png'
+	},
+	{
 		label: 'Node.js',
 		types: ['backend'],
 		iconUrl: './nodejs-icon.png'
@@ -43,6 +48,11 @@ const TOOLS: Tool[] = [
 		iconUrl: './spring-boot-icon.png'
 	},
 	{
+		label: 'Python',
+		types: ['backend'],
+		iconUrl: './python.png'
+	},
+	{
 		label: 'PostgreSQL',
 		types: ['backend', 'database'],
 		iconUrl: './postgres-icon.png'
@@ -50,8 +60,7 @@ const TOOLS: Tool[] = [
 	{
 		label: 'Go',
 		types: ['backend', 'system_programming'],
-		iconUrl: './go-icon.png',
-		inProgress: true
+		iconUrl: './go-icon.png'
 	},
 	{
 		label: 'Rust',
