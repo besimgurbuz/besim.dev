@@ -1,10 +1,19 @@
 <script lang="ts">
-	export let name: string;
-	export let imgSrc: string;
-	export let type: 'playing' | 'listening';
-	export let link = '';
+	interface Props {
+		name: string;
+		imgSrc: string;
+		type: 'playing' | 'listening';
+		link?: string;
+	}
 
-	$: activtyTitle = type === 'playing' ? 'Playing' : 'Listening';
+	let {
+		name,
+		imgSrc,
+		type,
+		link = ''
+	}: Props = $props();
+
+	let activtyTitle = $derived(type === 'playing' ? 'Playing' : 'Listening');
 </script>
 
 <div class="activity-badge">

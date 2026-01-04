@@ -4,13 +4,17 @@
 	import Chip from '../Chip.svelte';
 	import ToolCard from './ToolCard.svelte';
 
-	export let tools: Tool[];
+	interface Props {
+		tools: Tool[];
+	}
 
-	$: toolTypes = new Set(['all', ...tools.flatMap((skill) => skill.types)]);
-	$: filteredTools = tools.filter(
+	let { tools }: Props = $props();
+
+	let selectedType: 'all' | string = $state('all');
+	let toolTypes = $derived(new Set(['all', ...tools.flatMap((skill) => skill.types)]));
+	let filteredTools = $derived(tools.filter(
 		(skill) => selectedType === 'all' || skill.types.includes(selectedType)
-	);
-	let selectedType: 'all' | string = 'all';
+	));
 </script>
 
 <div class="filterable-tools">

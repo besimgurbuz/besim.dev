@@ -1,13 +1,22 @@
 <script lang="ts">
 	import { dateTimeFormat } from './store';
 
-	export let title: string;
-	export let url: string;
-	export let categories: string[];
-	export let publishDate: string;
+	interface Props {
+		title: string;
+		url: string;
+		categories: string[];
+		publishDate: string;
+	}
 
-	$: date = $dateTimeFormat.format(new Date(publishDate));
-	$: subText = categories.map((category) => `#${category}`).join(', ');
+	let {
+		title,
+		url,
+		categories,
+		publishDate
+	}: Props = $props();
+
+	let date = $derived($dateTimeFormat.format(new Date(publishDate)));
+	let subText = $derived(categories.map((category) => `#${category}`).join(', '));
 </script>
 
 <div class="card post">

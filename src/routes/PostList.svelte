@@ -3,7 +3,11 @@
 	import Post from './Post.svelte';
 	import PostSkeleton from './PostSkeleton.svelte';
 
-	export let postsPromise: Promise<BlogPost[]>;
+	interface Props {
+		postsPromise: Promise<BlogPost[]>;
+	}
+
+	let { postsPromise }: Props = $props();
 </script>
 
 <div class="blog-posts">

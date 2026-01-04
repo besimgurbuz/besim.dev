@@ -4,7 +4,7 @@
 	import { routes } from './store';
 	import ThemeSwitcher from './ThemeSwitcher.svelte';
 
-	$: activeRoute = $page.url.pathname;
+	let activeRoute = $derived($page.url.pathname);
 </script>
 
 <nav>

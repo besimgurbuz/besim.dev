@@ -4,8 +4,13 @@
 	import Header from './Header.svelte';
 	import { theme } from './store';
 	import './styles.css';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
 
-	$: light = $theme === 'light';
+	let { children }: Props = $props();
+
+	let light = $derived($theme === 'light');
 
 	const printLogMessage = () => {
 		console.log('%cHello there!', "color: #ed5639; font-size: 2em;'");
@@ -25,7 +30,7 @@
 <div class="app" class:light>
 	<Header />
 	<main>
-		<slot />
+		{@render children?.()}
 	</main>
 	<Footer />
 </div>

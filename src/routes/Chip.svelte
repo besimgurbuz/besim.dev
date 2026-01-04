@@ -1,9 +1,16 @@
 <script lang="ts">
-	export let label: string;
-	export let active = false;
+	import { createBubbler } from 'svelte/legacy';
+
+	const bubble = createBubbler();
+	interface Props {
+		label: string;
+		active?: boolean;
+	}
+
+	let { label, active = false }: Props = $props();
 </script>
 
-<span class="chip" class:active on:click on:keypress>
+<span class="chip" class:active onclick={bubble('click')} onkeypress={bubble('keypress')}>
 	<p class="chip-label">{label}</p>
 </span>
 

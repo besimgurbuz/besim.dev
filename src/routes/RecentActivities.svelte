@@ -4,7 +4,11 @@
 	import ActivityBadge from './ActivityBadge.svelte';
 	import ActivitySkeleton from './ActivitySkeleton.svelte';
 
-	export let recentActivitiesPromise: Promise<RecentActivity>;
+	interface Props {
+		recentActivitiesPromise: Promise<RecentActivity>;
+	}
+
+	let { recentActivitiesPromise }: Props = $props();
 </script>
 
 <div class="card lately-activity">

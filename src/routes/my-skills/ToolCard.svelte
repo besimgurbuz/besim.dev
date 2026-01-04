@@ -1,9 +1,13 @@
 <script lang="ts">
 	import WipIcon from '$lib/icons/WipIcon.svelte';
 
-	export let icon: string;
-	export let label: string;
-	export let inProgress = false;
+	interface Props {
+		icon: string;
+		label: string;
+		inProgress?: boolean;
+	}
+
+	let { icon, label, inProgress = false }: Props = $props();
 </script>
 
 <span class="card tool">

@@ -1,14 +1,23 @@
-<script>
-	export let width = '100%';
-	export let height = '25px';
-	export let borderRadius = '4px';
-	export let animationLength = '1.2s';
+<script lang="ts">
+	interface Props {
+		width?: string;
+		height?: string;
+		borderRadius?: string;
+		animationLength?: string;
+	}
+
+	let {
+		width = '100%',
+		height = '25px',
+		borderRadius = '4px',
+		animationLength = '1.2s'
+	}: Props = $props();
 </script>
 
 <div
 	class="skeleton"
 	style="height: {height}; width: {width}; border-radius: {borderRadius}; --animationLength: {animationLength}"
-/>
+></div>
 
 <style>
 	.skeleton {

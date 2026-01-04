@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let color: string;
+	interface Props {
+		color: string;
+	}
+
+	let { color }: Props = $props();
 </script>
 
 <svg width="81" height="63" viewBox="0 0 81 63" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -3,7 +3,11 @@
 	import ProjectCard from './ProjectCard.svelte';
 	import ProjectSkeleton from './ProjectSkeleton.svelte';
 
-	export let projectsPromise: Promise<Project[]>;
+	interface Props {
+		projectsPromise: Promise<Project[]>;
+	}
+
+	let { projectsPromise }: Props = $props();
 </script>
 
 <div class="project-list">

@@ -3,11 +3,11 @@
 	import openedLamp from '$lib/images/lamp_opened.svg';
 	import { theme } from './store';
 
-	$: isLightTheme = $theme === 'light';
-	$: iconSource = isLightTheme ? openedLamp : closedLamp;
+	let isLightTheme = $derived($theme === 'light');
+	let iconSource = $derived(isLightTheme ? openedLamp : closedLamp);
 </script>
 
-<button on:click={() => theme.set(isLightTheme ? 'dark' : 'light')}>
+<button onclick={() => theme.set(isLightTheme ? 'dark' : 'light')}>
 	<img src={iconSource} alt="Theme switcher" />
 </button>
 

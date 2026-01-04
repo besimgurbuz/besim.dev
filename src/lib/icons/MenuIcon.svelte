@@ -1,6 +1,10 @@
 <script lang="ts">
-	export let color: string;
-	export let switchToClose: boolean = false;
+	interface Props {
+		color: string;
+		switchToClose?: boolean;
+	}
+
+	let { color, switchToClose = false }: Props = $props();
 
 	const width: number = 24;
 </script>

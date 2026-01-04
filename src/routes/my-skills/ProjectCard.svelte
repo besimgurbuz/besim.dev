@@ -5,9 +5,13 @@
 	import type { Project } from '$lib/models/project';
 	import { dateTimeFormat } from '../store';
 
-	export let project: Project;
-	$: topicsString = project.topics?.map((topic) => `#${topic}`).join(' ');
-	$: createdAt = $dateTimeFormat.format(new Date(project.createdAt as string));
+	interface Props {
+		project: Project;
+	}
+
+	let { project }: Props = $props();
+	let topicsString = $derived(project.topics?.map((topic) => `#${topic}`).join(' '));
+	let createdAt = $derived($dateTimeFormat.format(new Date(project.createdAt as string)));
 </script>
 
 <div class="card project">

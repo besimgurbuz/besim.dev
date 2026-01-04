@@ -3,7 +3,11 @@
 	import SkillSkeleton from './SkillSkeleton.svelte';
 	import ToolList from './ToolList.svelte';
 
-	export let toolsPromise: Promise<Tool[]>;
+	interface Props {
+		toolsPromise: Promise<Tool[]>;
+	}
+
+	let { toolsPromise }: Props = $props();
 </script>
 
 {#await toolsPromise}

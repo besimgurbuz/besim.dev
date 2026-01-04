@@ -6,18 +6,18 @@
 	import { routes } from './store';
 	import ThemeSwitcher from './ThemeSwitcher.svelte';
 
-	$: activeRoute = $page.url.pathname;
+	let activeRoute = $derived($page.url.pathname);
 
-	let opened = false;
+	let opened = $state(false);
 
-	let button: HTMLButtonElement;
+	let button: HTMLButtonElement = $state();
 </script>
 
 <div class="dropdown-menu">
 	<button
 		bind:this={button}
 		class="dropdown-menu-button"
-		on:click={() => (opened = !opened)}
+		onclick={() => (opened = !opened)}
 		aria-label="Dropdown open/close button"
 	>
 		<MenuIcon switchToClose={opened} color="var(--app-text-color)" />
@@ -26,7 +26,7 @@
 		<div
 			class="sidebar-menu"
 			use:clickOutside={button}
-			on:click_outside={() => (opened = false)}
+			onclick_outside={() => (opened = false)}
 			transition:slide={{ duration: 100 }}
 		>
 			{#each $routes as route}
