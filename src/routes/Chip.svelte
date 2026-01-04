@@ -8,10 +8,12 @@
 	}
 
 	let { label, active = false }: Props = $props();
+
+  let readableLabel = $derived(label.split('_').map(w => `${w[0].toUpperCase()}${w.slice(1)}`).join(' '))
 </script>
 
-<span class="chip" class:active onclick={bubble('click')} onkeypress={bubble('keypress')}>
-	<p class="chip-label">{label}</p>
+<span role="button" tabindex="0" class="chip" class:active onclick={bubble('click')} onkeypress={bubble('keypress')}>
+	<p class="chip-label">{readableLabel}</p>
 </span>
 
 <style>
