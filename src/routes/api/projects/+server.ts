@@ -38,7 +38,7 @@ export const GET = (async ({ fetch }) => {
 
 		return new Response(JSON.stringify(simplifyResponse(projectsResponse)));
 	} catch (err) {
-		throw error(500, "couldn't fetched project info");
+		error(500, "couldn't fetched project info");
 	}
 }) satisfies RequestHandler;
 
