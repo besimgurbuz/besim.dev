@@ -91,7 +91,7 @@
 
 	.greeting-text
 	/*, .job-text  */ {
-		font-size: 20px;
+		font-size: 1.5rem;
 		max-width: 500px;
 	}
 

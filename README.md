@@ -1,4 +1,4 @@
-# <a href="https://besimgurbuz.dev" target="_blank">besimgurbuz.dev</a>
+# <a href="https://besim.dev" target="_blank">besim.dev</a>
 
 This application is coded with <a href="https://kit.svelte.dev" target="_blank">SvelteKit@1.0.0</a> by Besim Gürbüz.
 

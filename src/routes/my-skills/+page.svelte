@@ -1,11 +1,12 @@
 <script lang="ts">
+	import type { Pathname } from '$app/types';
 	import type { Project } from '$lib/models/project';
 	import type { Tool } from '$lib/models/tool';
 	import ProjectList from './ProjectList.svelte';
 	import ToolsSection from './ToolsSection.svelte';
 
 	const fetchTools = async () => {
-		const res = await fetch('/api/tools');
+		const res = await fetch('/api/tools' as Pathname);
 		const body = (await res.json()) as Tool[];
 
 		return body;
@@ -59,8 +60,8 @@
 
 	.passion-text {
 		width: 450px;
-		font-size: 18px;
-		margin-bottom: 48px;
+		font-size: 1.5rem;
+		margin-bottom: 3rem;
 	}
 
 	.tools {

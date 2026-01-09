@@ -1,22 +1,25 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 	import DropdownMenu from './DropdownMenu.svelte';
 	import { routes } from './store';
 	import ThemeSwitcher from './ThemeSwitcher.svelte';
 
 	let activeRoute = $derived($page.url.pathname);
+
+	const mainPathResolved = resolve('/');
 </script>
 
 <nav>
 	<div class="main-header fade-in">
-		<a href="/" class="header-link header-banner">Besim Gürbüz</a>
+		<a href={mainPathResolved} class="header-link header-banner">Besim Gürbüz</a>
 	</div>
 	<div class="routes-container">
 		<div class="routes">
-			{#each $routes as route}
+			{#each $routes as route (route.pathname)}
 				<a
-					href={route.path}
-					class:active={route.path === activeRoute}
+					href={resolve(route.pathname)}
+					class:active={route.pathname === activeRoute}
 					class="header-link underline fade-in">{route.label}</a
 				>
 			{/each}
@@ -70,13 +73,13 @@
 		text-decoration: underline;
 	}
 
-	@media (min-width: 500px) {
+	@media (min-width: 750px) {
 		.routes {
 			display: flex;
 		}
 	}
 
-	@media (max-width: 499px) {
+	@media (max-width: 749px) {
 		.dropdown {
 			display: flex;
 		}

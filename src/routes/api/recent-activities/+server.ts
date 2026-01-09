@@ -1,4 +1,5 @@
 import type { RecentActivity, SpotifyActivity, SteamActitivy } from '$lib/models/recent-activity';
+import { generateGameIconURL, generateGameStoreURL } from '$lib/utils/steam-utils';
 import type { RequestHandler } from './$types';
 import type { SpotifyResponse, SteamResponse } from './response-model';
 import { spotifyClient } from './spotify-client';
@@ -45,7 +46,7 @@ const createSteamActivityResponse = ({ response }: SteamResponse): SteamActitivy
 	const latestGame = response.games[0];
 	return {
 		gameName: latestGame.name,
-		iconUrl: `https://media.steampowered.com/steamcommunity/public/images/apps/${latestGame.appid}/${latestGame.img_icon_url}.jpg`,
-		storeUrl: `https://store.steampowered.com/app/${latestGame.appid}`
+		iconUrl: generateGameIconURL(latestGame.appid, latestGame.img_icon_url),
+		storeUrl: generateGameStoreURL(latestGame.appid)
 	};
 };

@@ -1,0 +1,63 @@
+<script lang="ts">
+	import type { Pathname } from '$app/types';
+	import type { CombinedGameAchivement } from '$lib/models/achivements';
+	import StatsCard from './StatsCard.svelte';
+	import StatsSkeleton from './StatsSkeleton.svelte';
+
+	const fetchAchivements = async () => {
+		const res = await fetch('/api/game-achivements' as Pathname);
+		const combinedAchivements = (await res.json()) as CombinedGameAchivement;
+
+		return combinedAchivements;
+	};
+
+	const combinedAchivementsPromise = fetchAchivements();
+</script>
+
+<svelte:head>
+	<title>Besim Gürbüz • My Gaming Journey</title>
+
+	<meta name="twitter:title" content="Besim Gürbüz" />
+	<meta name="twitter:description" content="Besim Gürbüz • My Gaming Journey" />
+	<meta name="Description" content="Besim Gürbüz • My Gaming Journey" />
+</svelte:head>
+
+<div class="gaming-journey-container">
+	<div class="p-container">
+		<p class="passion-text fade-out">
+			Gaming plays a crucial role in my life. My whole software journey started with a simple
+			question of how can I make a game and add a <a
+				target="_blank"
+				href="https://en.wikipedia.org/wiki/Tofa%C5%9F">“Tofaş”</a
+			>; a legend in Turkish Automotive Industry.
+		</p>
+		<p class="passion-text fade-out">This section is solely dedicated to my gaming passion.</p>
+		<p class="passion-text fade-out">P.S. in the end I was able to make one and add my “Tofaş”.</p>
+		<p class="passion-text fade-out">P.P.S no, I’m not giving away my digital “Tofaş”</p>
+	</div>
+	{#await combinedAchivementsPromise}
+		<StatsSkeleton />
+	{:then combinedAchivements}
+		<StatsCard {combinedAchivements} />
+	{/await}
+</div>
+
+<style>
+	.gaming-journey-container {
+		margin-top: 110px;
+		max-width: 1100px;
+		display: flex;
+		flex-direction: column;
+		gap: 48px;
+	}
+
+	.p-container {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.passion-text {
+		font-size: 1.5rem;
+	}
+</style>
