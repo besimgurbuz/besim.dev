@@ -8,6 +8,8 @@ const {
   VITE_STEAM_USER_ID
 } = import.meta.env;
 
+const MY_GOATS = ["Baldur's Gate 3", "ELDEN RING", "God of War Ragnarök"]; 
+
 export const GET = (async ({fetch, setHeaders}) => {
   const psResult = await getPSAchivements(VITE_PSN_SSO);
   const steamResult = await getSteamAchivements(VITE_STEAM_AUTH_KEY, VITE_STEAM_USER_ID, fetch);
@@ -61,6 +63,7 @@ export const GET = (async ({fetch, setHeaders}) => {
       gold: psResult.gold,
       platinum: psResult.platinum
     },
-    overallCompletePercentage: ((steamResult.earnedCount + psResult.earnedCount) / (steamResult.totalCount + psResult.totalCount)) * 100
+    overallCompletePercentage: ((steamResult.earnedCount + psResult.earnedCount) / (steamResult.totalCount + psResult.totalCount)) * 100,
+    goats: MY_GOATS.map((game) => combinedMap[game])
   } as CombinedGameAchivement));
 }) satisfies RequestHandler;

@@ -2,6 +2,7 @@
 	import type { CombinedGameAchivement } from '$lib/models/achivements';
 	import Percentage from './Percentage.svelte';
 	import StatIcon from './StatIcon.svelte';
+	import TrophyEarnings from './TrophyEarnings.svelte';
 
 	interface Props {
 		combinedAchivements: CombinedGameAchivement;
@@ -35,24 +36,9 @@
 		title="Overall game completion percentage"
 		value={combinedAchivements.overallCompletePercentage}
 		size={70}
-		strokeWidth={5}
+		strokeWidth={8}
 	/>
-	<div class="game-stat-item">
-		<img class="game-stat-trophy" src="platinum-trophy.png" alt="Platinum Trophy Image" />
-		<p class="game-stat-value">{combinedAchivements.playstation.platinum}</p>
-	</div>
-	<div class="game-stat-item">
-		<img class="game-stat-trophy" src="gold-trophy.png" alt="Gold Trophy Image" />
-		<p class="game-stat-value">{combinedAchivements.playstation.gold}</p>
-	</div>
-	<div class="game-stat-item">
-		<img class="game-stat-trophy" src="silver-trophy.png" alt="Silver Trophy Image" />
-		<p class="game-stat-value">{combinedAchivements.playstation.silver}</p>
-	</div>
-	<div class="game-stat-item">
-		<img class="game-stat-trophy" src="bronze-trophy.png" alt="Bronze Trophy Image" />
-		<p class="game-stat-value">{combinedAchivements.playstation.bronze}</p>
-	</div>
+	<TrophyEarnings {...combinedAchivements.playstation} />
 </div>
 
 <style>
@@ -82,10 +68,5 @@
 
 	.game-stat-title {
 		font-size: 1rem;
-	}
-
-	.game-stat-trophy {
-		width: 42px;
-		height: 42px;
 	}
 </style>

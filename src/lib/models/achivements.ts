@@ -67,5 +67,6 @@ export type CombinedGameAchivement = {
     gold: number;
     platinum: number;
   };
+  goats: [GameAchivement, GameAchivement, GameAchivement],
   overallCompletePercentage: number;
 }
