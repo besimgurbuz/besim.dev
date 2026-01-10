@@ -1,8 +1,12 @@
 <script lang="ts">
 	import type { Pathname } from '$app/types';
 	import { GamePlatform, type CombinedGameAchivement } from '$lib/models/achivements';
+	import ActivitySkeleton from '../ActivitySkeleton.svelte';
+	import Achivements from './Achivements.svelte';
+	import AchivementsSkeleton from './AchivementsSkeleton.svelte';
 	import Percentage from './Percentage.svelte';
 	import Podium from './Podium.svelte';
+	import PodiumSkeleton from './PodiumSkeleton.svelte';
 	import StatsCard from './StatsCard.svelte';
 	import StatsCardsSkeleton from './StatsCardSkeleton.svelte';
 
@@ -39,40 +43,12 @@
 	</div>
 	{#await combinedAchivementsPromise}
 		<StatsCardsSkeleton />
+		<PodiumSkeleton />
+		<AchivementsSkeleton />
 	{:then combinedAchivements}
 		<StatsCard {combinedAchivements} />
 		<Podium games={combinedAchivements.goats} />
-		<div class="achivements">
-			<h2>My Achivements</h2>
-			{#each combinedAchivements.achivements as achivement (achivement.gameName)}
-				<div class="card achivement">
-					<img
-						class="achivement-img"
-						src={achivement.gameHeaderUrl}
-						alt="{achivement.gameName} header image"
-					/>
-					<div class="achivement-body">
-						<h3 class="achivement-title">{achivement.gameName}</h3>
-						<Percentage
-							details={achivement.platform === GamePlatform.PlayStation
-								? {
-										mode: 'tropy',
-										...achivement.stats.tropyCounts
-									}
-								: {
-										mode: 'have_total',
-										have: achivement.stats.earnedAchivements,
-										total: achivement.stats.totalAchivements
-									}}
-							mode="line"
-							size="100%"
-							strokeWidth={4}
-							value={achivement.stats.completePercentage}
-						/>
-					</div>
-				</div>
-			{/each}
-		</div>
+		<Achivements achivements={combinedAchivements.achivements} />
 	{/await}
 </div>
 
@@ -94,36 +70,5 @@
 
 	.passion-text {
 		font-size: 1.5rem;
-	}
-
-	.achivements {
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-	}
-
-	.achivement {
-		display: flex;
-		gap: 1rem;
-	}
-
-	.achivement-img {
-		width: 120px;
-		height: 120px;
-		object-fit: contain;
-		background-color: var(--app-background-color);
-		border-radius: 5px;
-	}
-
-	.achivement-body {
-		width: 100%;
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-
-	.achivement-title {
-		color: var(--app-color-text);
 	}
 </style>

@@ -1,10 +1,10 @@
 <script lang="ts">
-	interface Props {
+	type Props = {
 		width?: string;
 		height?: string;
 		borderRadius?: string;
 		animationLength?: string;
-	}
+	};
 
 	let {
 		width = '100%',

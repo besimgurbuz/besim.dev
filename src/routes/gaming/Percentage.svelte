@@ -80,7 +80,7 @@
 					<div class="value">{details.have}/{details.total}</div>
 				{:else}
 					<div class="line-trophy-earnings">
-						<TrophyEarnings size={32} {...details!} />
+						<TrophyEarnings size={36} {...details!} />
 					</div>
 				{/if}
 				<span class="value">{Math.round(animatedValue.current)}%</span>
