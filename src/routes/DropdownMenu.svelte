@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { resolve } from '$app/paths';
 	import { clickOutside } from '$lib/actions/click-outside';
 	import MenuIcon from '$lib/icons/MenuIcon.svelte';
 	import { slide } from 'svelte/transition';
@@ -29,8 +30,12 @@
 			onclick_outside={() => (opened = false)}
 			transition:slide={{ duration: 100 }}
 		>
-			{#each $routes as route}
-				<a href={route.path} class:active={route.path === activeRoute} class="sidebar-menu-link">
+			{#each $routes as route (route.label)}
+				<a
+					href={resolve(route.pathname)}
+					class:active={route.pathname === activeRoute}
+					class="sidebar-menu-link"
+				>
 					{route.label}
 				</a>
 			{/each}
