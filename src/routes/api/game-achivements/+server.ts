@@ -8,7 +8,18 @@ const {
   VITE_STEAM_USER_ID
 } = import.meta.env;
 
-const MY_GOATS = ["Baldur's Gate 3", "ELDEN RING", "God of War Ragnarök"]; 
+const MY_GOATS = ["baldur's gate 3", "elden ring", "god of war ragnarök"]; 
+
+const formatGameName = (gameName: string) => {
+  const filters = ['™', 'Trophies', '\n'];
+  let result = gameName;
+
+  for (const f of filters) {
+    result = result.replace(f, "");
+  }
+
+  return result.trim().toLowerCase();
+};
 
 export const GET = (async ({fetch, setHeaders}) => {
   const psResult = await getPSAchivements(VITE_PSN_SSO);
@@ -17,20 +28,22 @@ export const GET = (async ({fetch, setHeaders}) => {
   const combinedMap: Record<string, GameAchivement> = {};
 
   for (const psAchivement of psResult.achivements) {
-    combinedMap[psAchivement.gameName] = psAchivement;
+    const gameKey = formatGameName(psAchivement.gameName);
+    combinedMap[gameKey] = psAchivement;
   }
 
   for (const steamAchivement of steamResult.achivements) {
-    if (!combinedMap[steamAchivement.gameName]) {
-      combinedMap[steamAchivement.gameName] = steamAchivement;
+    const gameKey = formatGameName(steamAchivement.gameName);
+    if (!combinedMap[gameKey]) {
+      combinedMap[gameKey] = steamAchivement;
       continue;
     } 
 
-    const psPercentage = combinedMap[steamAchivement.gameName]?.stats.completePercentage || 0;
+    const psPercentage = combinedMap[gameKey]?.stats.completePercentage || 0;
     const steamPercentage = steamAchivement.stats.completePercentage || 0;
 
     if (psPercentage < steamPercentage) {
-      combinedMap[steamAchivement.gameName] = steamAchivement;
+      combinedMap[gameKey] = steamAchivement;
     }
   }
 

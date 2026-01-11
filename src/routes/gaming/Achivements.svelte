@@ -20,6 +20,7 @@
 	<button
 		aria-label="Display {displayedAmount === achivements.length ? 'less' : 'more'} achivements"
 		class="display-all-button"
+		title="Display {displayedAmount === achivements.length ? 'less' : 'more'} achivements"
 		onclick={() =>
 			(displayedAmount = displayedAmount === achivements.length ? 10 : achivements.length)}
 	>

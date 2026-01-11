@@ -10,18 +10,6 @@ import {
 } from "$lib/models/achivements";
 import { sum } from "$lib/utils/math";
 
-
-const clearGameName = (initialName: string) => {
-  const filters = ['™', 'Trophies', '\n'];
-  let result = initialName;
-
-  for (const f of filters) {
-    result = result.replace(f, "");
-  }
-
-  return result.trim();
-};
-
 export const getPlayStationAchivements = async (npsso: string) => {
   const accessCode = await exchangeNpssoForAccessCode(npsso);
   const authorization = await exchangeAccessCodeForAuthTokens(accessCode);
@@ -37,7 +25,7 @@ export const getPlayStationAchivements = async (npsso: string) => {
 
       result.achivements.push({
         platform: GamePlatform.PlayStation,
-        gameName: clearGameName(titleTropy.trophyTitleName),
+        gameName: titleTropy.trophyTitleName,
         gameImageUrl: titleTropy.trophyTitleIconUrl,
         gameHeaderUrl: titleTropy.trophyTitleIconUrl,
         stats: {
@@ -96,7 +84,7 @@ export const getSteamAchivements = async (
 
       return {
         platform: GamePlatform.Steam,
-        gameName: clearGameName(game.name),
+        gameName: game.name,
         gameImageUrl: generateGameIconURL(game.appid, game.img_icon_url),
         gameHeaderUrl: generateGameHeaderURL(game.appid),
         gameStoreUrl: generateGameStoreURL(game.appid),

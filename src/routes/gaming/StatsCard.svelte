@@ -13,23 +13,25 @@
 
 <div class="card game-stats fade-in">
 	<StatIcon color="var(--app-primary-color)" />
-	<div class="game-stat-item text-only-stat">
-		<p class="game-stat-value">
-			{combinedAchivements.steam.total + combinedAchivements.playstation.total}
-		</p>
-		<p class="game-stat-title">Total</p>
-	</div>
-	<div class="game-stat-item text-only-stat">
-		<p class="game-stat-value">
-			{combinedAchivements.steam.earned + combinedAchivements.playstation.earned}
-		</p>
-		<p class="game-stat-title">Earned</p>
-	</div>
-	<div class="game-stat-item text-only-stat">
-		<p class="game-stat-value">
-			{combinedAchivements.steam.perfectGames + combinedAchivements.playstation.platinum}
-		</p>
-		<p class="game-stat-title">Perfect Games</p>
+	<div class="stats-first-half">
+		<div class="game-stat-item text-only-stat">
+			<p class="game-stat-value">
+				{combinedAchivements.steam.total + combinedAchivements.playstation.total}
+			</p>
+			<p class="game-stat-title">Total</p>
+		</div>
+		<div class="game-stat-item text-only-stat">
+			<p class="game-stat-value">
+				{combinedAchivements.steam.earned + combinedAchivements.playstation.earned}
+			</p>
+			<p class="game-stat-title">Earned</p>
+		</div>
+		<div class="game-stat-item text-only-stat">
+			<p class="game-stat-value">
+				{combinedAchivements.steam.perfectGames + combinedAchivements.playstation.platinum}
+			</p>
+			<p class="game-stat-title">Perfect Games</p>
+		</div>
 	</div>
 	<Percentage
 		mode="circle"
@@ -38,18 +40,24 @@
 		size={70}
 		strokeWidth={8}
 	/>
-	<TrophyEarnings {...combinedAchivements.playstation} />
+	<div class="stats-second-half">
+		<TrophyEarnings {...combinedAchivements.playstation} />
+	</div>
 </div>
 
 <style>
 	.game-stats {
 		position: relative;
-		height: 70px;
-		width: 700px;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		align-self: center;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.stats-first-half,
+	.stats-second-half {
+		display: flex;
+		gap: 1rem;
 	}
 
 	.game-stat-item {
@@ -68,5 +76,15 @@
 
 	.game-stat-title {
 		font-size: 1rem;
+	}
+
+	@media (min-width: 800px) {
+		.game-stats {
+			flex-direction: row;
+			height: 70px;
+			width: 600px;
+			align-self: center;
+			justify-content: space-evenly;
+		}
 	}
 </style>
