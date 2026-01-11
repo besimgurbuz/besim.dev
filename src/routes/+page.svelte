@@ -48,14 +48,6 @@
 				<p class="greeting-text">
 					I like to create well-thought, tested, and continuously evolved products.
 				</p>
-				<!-- <p class="job-text">
-					Currently I am working at <a
-						href="https://siemens.com"
-						target="_blank"
-						rel="noreferrer"
-						class="company-link"><Siemens /></a
-					>
-				</p> -->
 			</div>
 			<div class="activities">
 				<RecentActivities {recentActivitiesPromise} />

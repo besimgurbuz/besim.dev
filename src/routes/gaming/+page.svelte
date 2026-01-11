@@ -47,6 +47,8 @@
 		<StatsCard {combinedAchivements} />
 		<Podium games={combinedAchivements.goats} />
 		<Achivements achivements={combinedAchivements.achivements} />
+	{:catch}
+		<p>An error occurred while trying to fetch my gaming journey. Please try again later.</p>
 	{/await}
 </div>
 
