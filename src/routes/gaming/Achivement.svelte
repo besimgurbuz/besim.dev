@@ -51,8 +51,8 @@
 	}
 
 	.achivement-img {
-		width: 120px;
-		height: 120px;
+		width: 90px;
+		height: 90px;
 		object-fit: contain;
 		background-color: var(--app-background-color);
 		border-radius: 5px;
@@ -67,6 +67,7 @@
 	}
 
 	.achivement-title {
+		font-size: 18px;
 		color: var(--app-color-text);
 	}
 
@@ -74,5 +75,16 @@
 		position: absolute;
 		top: 8px;
 		right: 8px;
+	}
+
+	@media (min-width: 500px) {
+		.achivement-img {
+			width: 120px;
+			height: 120px;
+		}
+
+		.achivement-title {
+			font-size: 24px;
+		}
 	}
 </style>

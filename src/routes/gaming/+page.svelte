@@ -55,20 +55,53 @@
 <style>
 	.gaming-journey-container {
 		width: 100%;
-		margin-top: 110px;
+		margin-top: 60px;
 		display: flex;
 		flex-direction: column;
-		gap: 60px;
+		gap: 30px;
 	}
 
 	.p-container {
 		max-width: 1100px;
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 16px;
 	}
 
 	.passion-text {
-		font-size: 1.5rem;
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	/* Tablet breakpoint */
+	@media (min-width: 768px) {
+		.gaming-journey-container {
+			margin-top: 80px;
+			gap: 45px;
+		}
+
+		.p-container {
+			gap: 18px;
+		}
+
+		.passion-text {
+			font-size: 1.25rem;
+		}
+	}
+
+	/* Desktop breakpoint */
+	@media (min-width: 1024px) {
+		.gaming-journey-container {
+			margin-top: 110px;
+			gap: 60px;
+		}
+
+		.p-container {
+			gap: 20px;
+		}
+
+		.passion-text {
+			font-size: 1.5rem;
+		}
 	}
 </style>

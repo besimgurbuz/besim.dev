@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { PlayStationGameAchivement } from '$lib/models/achivements';
 	import type { TrophyCounts } from 'psn-api';
 	import { Spring } from 'svelte/motion';
 	import TrophyEarnings from './TrophyEarnings.svelte';
@@ -154,24 +153,43 @@
 		display: flex;
 		align-items: flex-end;
 		justify-content: space-between;
-		font-size: 0.85rem;
+		font-size: 0.75rem;
 		font-weight: 600;
 		color: var(--text-main);
 	}
 
 	.line-trophy-earnings {
 		display: flex;
-		gap: 1rem;
+		gap: 0.5rem;
 	}
 
 	.value {
-		font-size: 1.2rem;
+		font-size: 1rem;
 		font-weight: 700;
 	}
 
 	.percent {
-		font-size: 0.7rem;
+		font-size: 0.6rem;
 		opacity: 0.6;
+	}
+
+	/* Responsive improvements for better readability */
+	@media (min-width: 500px) {
+		.line-header {
+			font-size: 0.85rem;
+		}
+
+		.line-trophy-earnings {
+			gap: 1rem;
+		}
+
+		.value {
+			font-size: 1.2rem;
+		}
+
+		.percent {
+			font-size: 0.7rem;
+		}
 	}
 
 	.fill {
