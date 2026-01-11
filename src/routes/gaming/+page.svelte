@@ -29,15 +29,15 @@
 <div class="gaming-journey-container">
 	<div class="p-container">
 		<p class="passion-text fade-out">
-			Gaming plays a crucial role in my life. My whole software journey started with a simple
-			question of how can I make a game and add a <a
+			Gaming plays an important role in my life. My entire software journey started with a simple
+			question: how can I make a game and add a <a
 				target="_blank"
 				href="https://en.wikipedia.org/wiki/Tofa%C5%9F">“Tofaş”</a
-			>; a legend in Turkish Automotive Industry.
+			>; the legend of the Turkish automotive industry.
 		</p>
-		<p class="passion-text fade-out">This section is solely dedicated to my gaming passion.</p>
-		<p class="passion-text fade-out">P.S. in the end I was able to make one and add my “Tofaş”.</p>
-		<p class="passion-text fade-out">P.P.S no, I’m not giving away my digital “Tofaş”</p>
+		<p class="passion-text fade-out">This section is solely dedicated to my passion for gaming.</p>
+		<p class="passion-text fade-out">P.S. In the end I was able to make one and add my “Tofaş”.</p>
+		<p class="passion-text fade-out">P.P.S No, I’m not giving away my digital “Tofaş”.</p>
 	</div>
 	{#await combinedAchivementsPromise}
 		<StatsCardsSkeleton />
