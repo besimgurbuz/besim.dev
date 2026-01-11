@@ -44,7 +44,7 @@
 >
 	{#if mode === 'circle'}
 		<div class="canvas">
-			<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+			<svg width={size} viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
 				<circle
 					cx="100"
 					cy="100"
