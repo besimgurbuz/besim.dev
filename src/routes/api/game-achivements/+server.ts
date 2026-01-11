@@ -1,6 +1,6 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import { getPlayStationAchivements as getPSAchivements, getSteamAchivements } from "./achivement-clients";
 import type { CombinedGameAchivement, GameAchivement } from "$lib/models/achivements";
+import { getPlayStationAchivements as getPSAchivements, getSteamAchivements } from "./achivement-clients";
 
 const {
   VITE_PSN_SSO,

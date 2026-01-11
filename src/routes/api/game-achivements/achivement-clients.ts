@@ -1,4 +1,3 @@
-import { exchangeAccessCodeForAuthTokens, exchangeNpssoForAccessCode, getUserTitles } from "psn-api";
 import type { RequestEvent } from "./$types";
 import { callSteamService, generateGameHeaderURL, generateGameIconURL, generateGameStoreURL } from "$lib/utils/steam-utils";
 import type { SteamResponseModel } from "$lib/models/steam";
@@ -9,6 +8,9 @@ import {
   type SteamGameAchivementResult 
 } from "$lib/models/achivements";
 import { sum } from "$lib/utils/math";
+import * as psnapi from 'psn-api';
+
+const { exchangeAccessCodeForAuthTokens, exchangeNpssoForAccessCode, getUserTitles } = psnapi;
 
 export const getPlayStationAchivements = async (npsso: string) => {
   const accessCode = await exchangeNpssoForAccessCode(npsso);
